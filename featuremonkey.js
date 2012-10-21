@@ -1,10 +1,7 @@
 var featuremonkey = {}
 
 featuremonkey.CompositionError = function(msg) {
-    return {
-        type: 'featuremonkey.CompositionError',
-        msg: msg
-    }
+    return 'featuremonkey.CompositionError: ' + msg
 }
 
 featuremonkey._refine = function(attribute_name, refinement, current_impl) {
@@ -33,19 +30,19 @@ featuremonkey._compose = function(superimposable_fst, current_impl) {
         if (key.indexOf('refine_') === 0) {
             var attr = key.substring('refine_'.length)
             if (current_impl[attr] == undefined) {
-                throw featuremonkey.CompositionError('cannot refine "' + key + '"! Original has no such property!')
+                throw featuremonkey.CompositionError('cannot refine "' + attr + '"! Original has no such property!')
             }
             featuremonkey._refine(attr, value, current_impl)
         } else if (key.indexOf('introduce_') === 0) {
             var attr = key.substring('introduce_'.length)
             if (current_impl[attr] != undefined) {
-                throw featuremonkey.CompositionError('cannot introduce "' + key + '"! Original already contains such a key!')
+                throw featuremonkey.CompositionError('cannot introduce "' + attr + '"! Original already contains such a key!')
             }
             featuremonkey._introduce(attr, value, current_impl)
         } else if (key.indexOf('child_') === 0) {
             var attr = key.substring('child_'.length)
             if (current_impl[attr] == undefined) {
-                throw featuremonkey.CompositionError('cannot apply refinement on "' + key + '"! Original has no such property!')
+                throw featuremonkey.CompositionError('cannot apply refinement on "' + attr + '"! Original has no such property!')
             }
             featuremonkey._child_refine(attr, value, current_impl)
         }
