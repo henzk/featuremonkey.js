@@ -1,0 +1,8 @@
+# We aren't actually using any particular language here, so let's use Ruby
+# since that's probably the most likely Travis worker to be available
+language: ruby
+rvm:
+  - 1.9.3
+script:
+  - "wget https://raw.github.com/henzk/OpenPhantomScripts/issue1/phantom-qunit.js"
+  - "phantomjs phantom-qunit.js test_featuremonkey.js.html"

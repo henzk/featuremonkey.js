@@ -4,6 +4,18 @@
         <script src="http://code.jquery.com/jquery-latest.js"></script>
         <script type="text/javascript" src="http://code.jquery.com/qunit/git/qunit.js"></script>
         <link rel="stylesheet" href="http://code.jquery.com/qunit/git/qunit.css" type="text/css" media="screen" />
+        <script>
+        //for phantomjs test runner
+        window.QUnit.config.done.push(function(obj) {
+            console.log("Tests passed: " + obj.passed);
+            console.log("Tests failed: " + obj.failed);
+            console.log("Total tests:  " + obj.total);
+            console.log("Runtime (ms): " + obj.runtime);
+            window.phantomComplete = true;
+            window.phantomResults = obj;
+        });
+        window.phantomAttached = true;
+        </script>
         <script type="text/javascript" src="featuremonkey.js"></script>
         <script type="text/javascript" src="test_featuremonkey.js"></script>
     </head>
