@@ -1,0 +1,30 @@
+body {
+    font-family: sans-serif;
+}
+h1 {
+    text-align:center;
+}
+.todos {
+    width: 800px;
+    margin:auto;
+}
+.todolist {
+    width: 100%;
+    list-style: none;
+    border: 1px solid #ccc;
+    background: #fbfbfb;
+    color: #222;
+}
+.todolist li {
+    padding-top:5px;
+    line-height:30px;
+    -webkit-touch-callout: none;
+    -webkit-user-select: none;
+    -khtml-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+}
+.done {
+    text-decoration:line-through;
+}

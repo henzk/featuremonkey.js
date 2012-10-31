@@ -1,0 +1,11 @@
+#filterbar a {
+    margin: 5px;
+    padding: 5px;
+    border: 1px solid #ccc;
+    background: #fbfbfb;
+    cursor: pointer;
+}
+#filterbar a.current {
+    background: #bbb;
+    border: 1px solid #999;
+}
