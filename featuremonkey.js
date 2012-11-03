@@ -125,7 +125,8 @@ featuremonkey._factory_refine = function(current_impl, attribute_name, element_f
  **/
 featuremonkey._compose = function(superimposable_fst, current_impl) {
 
-    $.each(superimposable_fst, function(key, value) {
+    for (var key in superimposable_fst) {
+        value = superimposable_fst[key]
         if (key.indexOf('refine_') === 0) {
             var attr = key.substring('refine_'.length)
             if (current_impl[attr] == undefined) {
@@ -154,7 +155,7 @@ featuremonkey._compose = function(superimposable_fst, current_impl) {
             }
             featuremonkey._compose(value, current_impl[attr])
         }
-    })
+    }
 
     return current_impl
 }
